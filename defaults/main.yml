@@ -1,0 +1,28 @@
+mikrotik_exporter_version: 1.0.11
+mikrotik_exporter_user: mikrotik-exporter
+mikrotik_exporter_group: "{{ mikrotik_exporter_user }}"
+
+mikrotik_exporter_devices:
+  - name: test1
+    address: 192.168.1.1
+    user: foo
+    password: bar
+
+mikrotik_exporter_features_bgp: false
+mikrotik_exporter_features_conntrack: false
+mikrotik_exporter_features_dhcp: true
+mikrotik_exporter_features_dhcpl: true
+mikrotik_exporter_features_dhcpv6: false
+mikrotik_exporter_features_firmware: true
+mikrotik_exporter_features_health: true
+mikrotik_exporter_features_routes: true
+mikrotik_exporter_features_poe: false
+mikrotik_exporter_features_pools: true
+mikrotik_exporter_features_optics: false
+mikrotik_exporter_features_w60g: false
+mikrotik_exporter_features_wlansta: false
+mikrotik_exporter_features_wlanif: false
+mikrotik_exporter_features_monitor: true
+mikrotik_exporter_features_ipsec: true
+mikrotik_exporter_features_lte: true
+mikrotik_exporter_features_netwatch: true

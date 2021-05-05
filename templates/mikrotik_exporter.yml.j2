@@ -1,0 +1,29 @@
+{{ ansible_managed | comment }}
+# https://github.com/nshttpd/mikrotik-exporter/blob/master/config/config.go
+devices:
+{% for device in mikrotik_exporter_devices %}
+  - name: {{ device.name }}
+    address: {{ device.address }}
+    user: {{ device.user }}
+    password: {{ device.password }}
+{% endfor %}
+
+features:
+  bgp: {{ mikrotik_exporter_features_bgp | lower }}
+  conntrack: {{ mikrotik_exporter_features_conntrack | lower }}
+  dhcp: {{ mikrotik_exporter_features_dhcp | lower }}
+  dhcpl: {{ mikrotik_exporter_features_dhcpl | lower }}
+  dhcpv6: {{ mikrotik_exporter_features_dhcpv6 | lower }}
+  firmware: {{ mikrotik_exporter_features_firmware | lower }}
+  health: {{ mikrotik_exporter_features_health | lower }}
+  routes: {{ mikrotik_exporter_features_routes | lower }}
+  poe: {{ mikrotik_exporter_features_poe | lower }}
+  pools: {{ mikrotik_exporter_features_pools | lower }}
+  optics: {{ mikrotik_exporter_features_optics | lower }}
+  w60g: {{ mikrotik_exporter_features_w60g | lower }}
+  wlansta: {{ mikrotik_exporter_features_wlansta | lower }}
+  wlanif: {{ mikrotik_exporter_features_wlanif | lower }}
+  monitor: {{ mikrotik_exporter_features_monitor | lower }}
+  ipsec: {{ mikrotik_exporter_features_ipsec | lower }}
+  lte: {{ mikrotik_exporter_features_lte | lower }}
+  netwatch: {{ mikrotik_exporter_features_netwatch | lower }}

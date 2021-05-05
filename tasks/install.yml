@@ -1,0 +1,28 @@
+---
+- name: Download mikrotik_exporter
+  get_url:
+    url: "https://github.com/nshttpd/mikrotik-exporter/releases/download/{{ mikrotik_exporter_version }}/mikrotik-exporter_linux_amd64"
+    dest: "/tmp/mikrotik-exporter-{{ mikrotik_exporter_version }}"
+  delegate_to: localhost
+
+- name: create system group
+  group:
+    name: "{{ mikrotik_exporter_group }}"
+    system: true
+    state: present
+
+- name: create system user
+  user:
+    name: "{{ mikrotik_exporter_user }}"
+    system: true
+    shell: "/usr/sbin/nologin"
+    group: "{{ mikrotik_exporter_group }}"
+    createhome: false
+
+- name: deploy binary to host
+  copy:
+    src: "/tmp/mikrotik-exporter-{{ mikrotik_exporter_version }}"
+    dest: "/usr/local/bin/mikrotik_exporter"
+    mode: 0755
+  notify:
+    - restart mikrotik exporter
